@@ -1,11 +1,14 @@
 workspace:
-  base: /drone
-  path: src
+  base: /go
+  path: src/github.com/drone-demos/drone-with-go
 
 pipeline:
-  build:
-    image: node:latest
-    commands: npm install
   test:
-    image: node:latest
-    commands: npm run test
+    image: golang:latest
+    commands:
+      - go vet
+      - go test -v -cover
+  build:
+    image: golang:latest
+    commands:
+      - go build
