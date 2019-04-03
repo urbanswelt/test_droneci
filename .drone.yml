@@ -1,14 +1,21 @@
-workspace:
-  base: /go
-  path: src/github.com/drone-demos/drone-with-go
+kind: pipeline
+name: greeting
 
-pipeline:
-  test:
-    image: golang:latest
-    commands:
-      - go vet
-      - go test -v -cover
-  build:
-    image: golang:latest
-    commands:
-      - go build
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
+
+- name: es
+  image: alpine
+  commands:
+  - echo hola
+  - echo mundo
+
+- name: fr
+  image: alpine
+  commands:
+  - echo bonjour
+  - echo monde
